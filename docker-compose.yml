@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:8.3.0
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - ./tearup/university/init.sql:/docker-entrypoint-initdb.d/university.sql
+      - ./tearup/grant.sql:/docker-entrypoint-initdb.d/grant.sql
+    ports:
+      - "3306:3306"
+    restart: always
