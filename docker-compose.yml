@@ -7,7 +7,8 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
     volumes:
-      - ./tearup/university/init.sql:/docker-entrypoint-initdb.d/university.sql
+      - ./tearup/university/table.sql:/docker-entrypoint-initdb.d/1-table.sql
+      - ./tearup/university/data.sql:/docker-entrypoint-initdb.d/2-data.sql
       - ./tearup/grant.sql:/docker-entrypoint-initdb.d/grant.sql
     ports:
       - "3306:3306"
